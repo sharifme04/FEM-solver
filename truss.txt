@@ -1,0 +1,70 @@
+ID TRUSS,SAMPLE
+TITLE=SAMPLE INPUT FILE
+SUBTITLE=TRUSS STRUCTURE
+MESH DIMENSION=2
+ELEMENT TYPE LINEAR
+UNIT FPS
+%
+% AREA YOUNG MODULUS NODE NUMBER ELEMENT NUMBER AND FIXED DOF
+BASIC DATA START
+  1   29.5e6    6    9   4 
+BASIC DATA END
+%
+%GEOMETRIC AND MESH DEFINITION 
+%
+BEGIN NODE 
+    1               0              30               
+    2               0               0               
+    3              40              30               
+    4              40               0               
+    5              80              30               
+    6              80               0 
+END NODE 
+BEGIN ELEMENTS
+      0          2         4
+      1          4         6
+      2          6         5
+      3          5         3
+      4          3         1
+      5          1         2
+      6          4         3
+      7          3         6
+      8          1         4
+END ELEMENTS 
+
+%NODES NUMBER AND CONSTRAINED DISPLACEMENT in X Y DIRECTION RESPECTIVELY
+
+BEGIN DBC
+ 2           0          0 
+ 6           0          0
+END DBC
+
+ DOF with seiral number (column 1 serial number,column 2 DOF) 
+FREE DOF BEGIN
+   0    0
+   1    1
+   2    4
+   3    5
+   4    6
+   5    7
+   6    8
+   7    9
+FREE DOF END
+BEGIN FBC
+%NODES AND EXTERNAL FORCE IN X  Y DIRECTION RESPELCTIVELY
+ 3              0        -25000
+END FBC
+%first column serial number second column DOF 3rd coulmn force 
+FORCE ON DOF
+   0    0    0
+   1    1    0
+   2    4    0
+   3    5  -25000
+   4    6    0
+   5    7    0
+   6    8    0
+   7    9    0   
+END FORCE
+
+
+

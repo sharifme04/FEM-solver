@@ -1,0 +1,57 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#include<math.h>
+
+int main( ){
+
+char line[255];
+int i,j,index;
+double x,y;
+
+double bc_xy[6][2];
+
+ FILE *fp;
+ fp = fopen("truss.txt","r");
+                            
+
+    while (strcmp (line,"BEGIN NODE \r\n"))  // node and coordinate reading
+ 
+fgets(line,255,fp);
+
+     while (strcmp (line,"END NODE \r\n")) 
+      {
+      fgets(line,255,fp);
+      if (!strcmp(line,"END NODE \r\n")) break;
+
+sscanf(line,"%d %lf %lf",&index,&x,&y);
+
+bc_xy[index][0]=x;
+bc_xy[index][1]=y;
+
+printf("bc_xy[%d][0]=%lf\n",index,bc_xy[index][0]);
+printf("bc_xy[%d][1]=%lf\n",index,bc_xy[index][1]);
+
+}
+
+ while (strcmp (line,"BEGIN ELEMENTS \r\n"))  // node and coordinate reading
+ 
+fgets(line,255,fp);
+
+     while (strcmp (line,"END ELEMENTS \r\n")) 
+      {
+      fgets(line,255,fp);
+      if (!strcmp(line,"END NODE \r\n")) break;
+
+sscanf(line,"%d %lf %lf",&index,&x,&y);
+
+bc_xy[index][0]=x;
+bc_xy[index][1]=y;
+
+printf("bc_xy[%d][0]=%lf\n",index,bc_xy[index][0]);
+printf("bc_xy[%d][1]=%lf\n",index,bc_xy[index][1]);
+
+}
+
+return 0;
+}

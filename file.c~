@@ -1,0 +1,56 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#include<math.h>
+
+int main( ){
+
+char line[300];
+int i,j,l,n;
+double x,y;
+double E=29.5e6;
+double A=1; 
+
+
+
+double ID[4][9];
+int x0,x1,x2,x3,x4,x5,x6,x7,x8,index2;
+
+ FILE *fp;
+ fp = fopen("ID.txt","r");
+
+    while (strcmp (line," BEGIN ID \r\n"))  // node and coordinate reading
+ 
+fgets(line,300,fp);
+
+     while (strcmp (line," END ID \r\n")) 
+      {
+      fgets(line,300,fp);
+      if (!strcmp(line," END ID \r\n")) break;
+
+sscanf(line,"%d %d %d %d %d %d %d %d %d %d \n",&index2,&x0,&x1,&x2,&x3,&x4,&x5,&x6,&x7,&x8);
+
+ID[index2][0]=x0;
+ID[index2][1]=x1;
+ID[index2][2]=x2;
+ID[index2][3]=x3;
+ID[index2][4]=x4;
+ID[index2][5]=x5;
+ID[index2][6]=x6;
+ID[index2][7]=x7;
+ID[index2][8]=x8;
+
+printf("ID[%d][0]=%lf\n",index2,ID[index2][0]);
+printf("ID[%d][1]=%lf\n",index2,ID[index2][1]);
+printf("ID[%d][2]=%lf\n",index2,ID[index2][2]);
+printf("ID[%d][3]=%lf\n",index2,ID[index2][3]);
+printf("ID[%d][4]=%lf\n",index2,ID[index2][4]);
+printf("ID[%d][5]=%lf\n",index2,ID[index2][5]);
+printf("ID[%d][6]=%lf\n",index2,ID[index2][6]);
+printf("ID[%d][7]=%lf\n",index2,ID[index2][7]);
+printf("ID[%d][8]=%lf\n",index2,ID[index2][8]);
+
+}
+ 
+return 0;
+}
